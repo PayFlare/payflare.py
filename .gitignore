@@ -1,0 +1,6 @@
+.env
+build/
+payflare.egg-info/
+*.pyc
+__pycache__/
+dist/
