@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name="payflare",
-    version="0.0.3",
+    version="0.0.4",
     author="Payflare",
     description="Payflare.io Python Client Library",
     long_description="Payflare.io Python Client Library",

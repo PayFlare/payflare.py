@@ -49,12 +49,12 @@ class Webhooks:
         exp = matches.group("exp")
         if (time.time() - int(exp)) > 60 * 3:
             raise Exception("Signature expired")
-        if not hmac.compare_digest(signature_txt, hmac.new(webhook_secret.encode(), payload.encode(), sha256).hexdigest()):
+        if not hmac.compare_digest(signature_txt, hmac.new(webhook_secret.encode(), f"{exp}.{payload.encode()}", sha256).hexdigest()):
             raise Exception("Invalid signature")
         return json.loads(payload)
 class Payflare:
     def __init__(self, api_secret:str):
-        self.__api = httpx.AsyncClient(base_url="https://api.payflare.com/",
+        self.__api = httpx.AsyncClient(base_url="https://api.payflare.io",
             headers={"api-auth": f"Token {api_secret}", "Content-Type": "application/json"})
     @property
     def payments(self):
