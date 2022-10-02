@@ -54,7 +54,7 @@ class Webhooks:
         return json.loads(payload)
 class Payflare:
     def __init__(self, api_secret:str):
-        self.__api = httpx.AsyncClient(base_url="https://api.payflare.io",
+        self.__api = httpx.AsyncClient(base_url="https://api.payflare.io/v1",
             headers={"api-auth": f"Token {api_secret}", "Content-Type": "application/json"})
     @property
     def payments(self):
